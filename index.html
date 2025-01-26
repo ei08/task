@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>タスク管理アプリ</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>タスク管理アプリ</h1>
+    <div id="mobile-buttons" class="mobile-only">
+      <button id="show-task-list" class="mobile-button">タスク一覧</button>
+      <button id="show-task-add" class="mobile-button">タスク追加</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section id="task-input" class="left-panel">
+        <h2>新しいタスクを追加</h2>
+        <form id="task-form" aria-label="タスク追加フォーム">
+          <div class="form-group">
+            <label for="task-name">タスク名</label>
+            <input type="text" id="task-name" placeholder="タスク名を入力" required aria-label="タスク名入力">
+          </div>
+          <div class="form-group">
+            <label for="task-category">カテゴリ</label>
+            <select id="task-category" required aria-label="タスクカテゴリ選択">
+              <option value="勉強">勉強</option>
+              <option value="トレーニング">トレーニング</option>
+              <option value="趣味">趣味</option>
+              <option value="その他">その他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="task-date">日付</label>
+            <input type="date" id="task-date" required aria-label="タスク日付入力">
+          </div>
+          <div class="form-group">
+            <label for="task-time">時間 (分/時間)</label>
+            <input type="text" id="task-time" placeholder="1時間" required aria-label="タスク時間入力">
+          </div>
+          <button type="submit" aria-label="タスク追加">追加</button>
+        </form>
+      </section>
+
+      <section id="task-list" class="right-panel">
+        <div id="task-search">
+          <div class="form-group">
+            <label for="search-date">日付で検索</label><br>
+            <input type="date" id="search-date" aria-label="日付検索ボックス">
+            <button id="reset-date" aria-label="日付リセット">リセット</button>
+          </div>
+          <div class="form-group">
+            <label for="search-category">カテゴリで検索</label><br>
+            <select id="search-category" aria-label="カテゴリ検索ボックス">
+              <option value="">すべて</option>
+              <option value="勉強">勉強</option>
+              <option value="トレーニング">トレーニング</option>
+              <option value="趣味">趣味</option>
+              <option value="その他">その他</option>
+            </select>
+            <button id="reset-category" aria-label="カテゴリリセット">リセット</button>
+          </div>
+        </div>
+        <h2>タスク一覧</h2>
+        <ul id="tasks" aria-label="タスクリスト">
+          <li id="no-tasks" style="display: none;">タスクがありません</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 タスク管理アプリ</p>
+  </footer>
+</body>
+
+</html>

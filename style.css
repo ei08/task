@@ -1,0 +1,259 @@
+/* 全体リセット */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f5f7fa;
+  color: #333;
+  padding: 20px;
+}
+
+/* ヘッダー */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #4a90e2;
+  color: white;
+  padding: 20px 0;
+  border-radius: 8px;
+}
+
+/* スマホ用ボタンをデフォルトで非表示 */
+#mobile-buttons {
+  display: none;
+}
+
+/* メインコンテンツのレイアウト */
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* 左パネル（タスク追加） */
+.left-panel,
+.right-panel {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.left-panel h2,
+.right-panel h2 {
+  color: #4a90e2;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.left-panel .form-group {
+  margin-bottom: 15px;
+}
+
+.left-panel input,
+.left-panel select,
+.left-panel button {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.left-panel button {
+  background-color: #4a90e2;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.left-panel button:hover {
+  background-color: #357abd;
+}
+
+/* タスク検索 */
+#task-search {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#task-search .form-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#task-search input,
+#task-search select {
+  flex: 1;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+#task-search button {
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+#task-search button:hover {
+  background-color: #357abd;
+}
+
+/* タスクリスト */
+#tasks {
+  list-style: none;
+  padding: 0;
+}
+
+#tasks li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: #f9f9f9;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+}
+
+#tasks li:hover {
+  background-color: #eaf3fc;
+}
+
+/* タスク詳細 */
+.task-details {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: nowrap;
+}
+
+.task-checkbox {
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  border: 2px solid #4a90e2;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.task-checkbox:checked {
+  background-color: #4a90e2;
+  border-color: #357abd;
+}
+
+.task-name {
+  font-weight: bold;
+  color: #333;
+  flex: 1;
+}
+
+.task-date {
+  color: #888;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+/* ドラッグハンドル */
+.task-handle {
+  font-size: 1.5rem;
+  cursor: grab;
+  margin-left: auto;
+  user-select: none;
+  color: #aaa;
+}
+
+.task-handle:hover {
+  color: #555;
+}
+
+/* ドラッグ中のタスク */
+.task-item.dragging {
+  opacity: 0.5;
+}
+
+/* タスク間のドラッグ位置を示す横棒 */
+.drag-line {
+  height: 2px;
+  background-color: #4a90e2;
+  margin: 0;
+  border-radius: 1px;
+  transition: all 0.2s ease;
+}
+
+/* フッター */
+footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* スマホ用スタイル */
+@media (max-width: 768px) {
+  #mobile-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  #mobile-buttons button {
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    background-color: #4a90e2;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  #mobile-buttons button:hover {
+    background-color: #357abd;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  #task-input,
+  #task-list {
+    display: none;
+  }
+
+  #task-input.active,
+  #task-list.active {
+    display: block;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
