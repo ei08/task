@@ -216,6 +216,52 @@ footer {
 /* スマホ用スタイル */
 @media (max-width: 768px) {
 
+  /* タブ切り替えボタン */
+  #tab-buttons {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  #tab-buttons button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    background-color: #4a90e2;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #tab-buttons button:hover {
+    background-color: #357abd;
+  }
+
+  #tab-buttons button.active {
+    background-color: #357abd;
+    font-weight: bold;
+  }
+
+  /* タスク追加セクションとタスク一覧セクション */
+  #task-input,
+  #task-list {
+    display: none; /* 初期状態は非表示 */
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  #task-input.active,
+  #task-list.active {
+    display: block; /* アクティブなセクションのみ表示 */
+  }
+  
   /* モバイルボタン */
   #mobile-buttons {
     display: flex;
