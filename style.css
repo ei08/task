@@ -216,30 +216,28 @@ footer {
 /* スマホ用スタイル */
 @media (max-width: 768px) {
 
-  /* モバイルボタン */
-  #mobile-buttons {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
+/* モバイルボタン */
+#mobile-buttons {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-  #mobile-buttons button {
-    flex: 1;
-    margin: 0 5px;
-    padding: 12px;
-    font-size: 1rem;
-    border: none;
-    background-color: #4a90e2;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+#mobile-buttons button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  background-color: #4a90e2;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
   #mobile-buttons button:hover {
     background-color: #357abd;
