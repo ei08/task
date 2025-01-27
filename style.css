@@ -216,28 +216,28 @@ footer {
 /* スマホ用スタイル */
 @media (max-width: 768px) {
 
-/* モバイルボタン */
-#mobile-buttons {
-  display: flex;
-  justify-content: space-around;
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+  /* モバイルボタン */
+  #mobile-buttons {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
 
-#mobile-buttons button {
-  flex: 1;
-  margin: 0 5px;
-  padding: 12px;
-  font-size: 1rem;
-  border: none;
-  background-color: #4a90e2;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+  #mobile-buttons button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    background-color: #4a90e2;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
 
   #mobile-buttons button:hover {
     background-color: #357abd;
@@ -250,75 +250,7 @@ footer {
     gap: 20px;
   }
 
-  /* 各パネル */
-  .left-panel,
-  .right-panel {
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  .left-panel h2,
-  .right-panel h2 {
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    text-align: center;
-  }
-
-  /* タスク追加フォーム */
-  .form-group {
-    margin-bottom: 15px;
-  }
-
-  .form-group label {
-    font-size: 1rem;
-    margin-bottom: 5px;
-    display: block;
-  }
-
-  .form-group input,
-  .form-group select {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    background-color: #f9f9f9;
-    color: #333;
-    box-sizing: border-box;
-  }
-
-  .form-group input:focus,
-  .form-group select:focus {
-    outline: none;
-    border-color: #4a90e2;
-    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
-  }
-
-  .left-panel button {
-    width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    background-color: #4a90e2;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .left-panel button:hover {
-    background-color: #357abd;
-  }
-
   /* タスクリスト */
-  #task-list {
-    padding: 0;
-  }
-
   #tasks {
     list-style: none;
     margin: 0;
@@ -328,7 +260,6 @@ footer {
   #tasks li {
     display: flex;
     flex-direction: column;
-    /* 縦並びに変更 */
     gap: 10px;
     background: #ffffff;
     margin-bottom: 15px;
@@ -338,27 +269,30 @@ footer {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
 
-  #tasks li .task-details {
+  #tasks li .task-header {
     display: flex;
-    flex-direction: column;
-    /* 縦並びで配置 */
-    gap: 5px;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  #tasks li .task-details span.task-name {
+  #tasks li .task-header .task-name {
     font-size: 1rem;
-    /* タスク名を強調 */
     font-weight: bold;
     word-break: break-word;
-    /* 1行内で収まらない場合に改行 */
   }
 
-  #tasks li .task-details span {
+  #tasks li .task-header .task-checkbox {
+    margin-right: 10px;
+  }
+
+  #tasks li .task-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     font-size: 0.9rem;
     color: #666;
   }
 
-  /* カテゴリー・時間・日付のスタイル調整 */
   #tasks li .task-details .task-category,
   #tasks li .task-details .task-time,
   #tasks li .task-details .task-date {
@@ -366,30 +300,8 @@ footer {
     color: #888;
   }
 
+  /* スマホで6点リーダー非表示 */
   #tasks li .drag-handle {
-    font-size: 1.5rem;
-    cursor: grab;
-    color: #aaa;
-  }
-
-  #tasks li .drag-handle:hover {
-    color: #4a90e2;
-  }
-
-  /* アクティブなセクションのみ表示 */
-  #task-input,
-  #task-list {
     display: none;
-  }
-
-  #task-input.active,
-  #task-list.active {
-    display: block;
-  }
-
-  /* カテゴリー検索ボックスを日付検索と揃える */
-  #task-search .form-group select {
-    margin-top: 5px;
-    /* 日付とボックスの上下間隔を揃える */
   }
 }
