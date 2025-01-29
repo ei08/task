@@ -214,3 +214,114 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 taskForm.addEventListener("submit", addTask);
+
+// ログイン機能の追加
+document.addEventListener('DOMContentLoaded', function () {
+  const loginButton = document.querySelector('.login-button');
+  const loginForm = document.querySelector('.login-form');
+  const passwordInput = loginForm.querySelector('input[type="password"]');
+  const submitButton = loginForm.querySelector('button[type="submit"]');
+  const logoutButton = document.createElement('button');
+  let isLoginFormVisible = false; // フォームの表示状態を追跡
+
+  // ログアウトボタンの設定
+  logoutButton.className = 'logout-button';
+  logoutButton.textContent = 'ログアウト';
+  document.body.appendChild(logoutButton);
+
+  // ログインボタンクリック時の処理
+  loginButton.addEventListener('click', function () {
+    if (!isLoginFormVisible) {
+      loginForm.style.display = 'flex';
+      isLoginFormVisible = true;
+    } else {
+      hideLoginForm();
+      isLoginFormVisible = false;
+    }
+  });
+
+  // ログインフォームを閉じる際のアニメーション
+  function hideLoginForm() {
+    const form = document.querySelector('.login-form');
+    form.classList.add('hiding');
+    form.addEventListener('animationend', () => {
+      form.style.display = 'none';
+      form.classList.remove('hiding');
+    }, { once: true });
+  }
+
+  // 正しいパスワード
+  const CORRECT_PASSWORD = 'eito0824';
+
+  // ログイン状態の確認と画面の初期表示
+  function checkLoginState() {
+    if (getCookie('isLoggedIn')) {
+      loginForm.style.display = 'none';
+      loginButton.style.display = 'none';
+      logoutButton.style.display = 'block';
+      loadTasks();
+      updateTaskList();
+    } else {
+      loginForm.style.display = 'none';
+      loginButton.style.display = 'block';
+      logoutButton.style.display = 'none';
+      taskList.innerHTML = '';
+      noTasksMessage.style.display = 'none';
+    }
+  }
+
+  // パスワード確認処理
+  submitButton.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    if (passwordInput.value === CORRECT_PASSWORD) {
+      setCookie('isLoggedIn', 'true', 30);
+      checkLoginState();
+      passwordInput.value = '';
+
+      fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          password: CORRECT_PASSWORD
+        })
+      });
+    } else {
+      alert('パスワードが正しくありません。');
+    }
+  });
+
+  // ログアウト処理
+  logoutButton.addEventListener('click', function () {
+    if (confirm('ログアウトしてもよろしいですか？')) {
+      document.cookie = 'isLoggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+      checkLoginState();
+      passwordInput.value = '';
+    }
+  });
+
+  // 初期表示時にログイン状態をチェック
+  checkLoginState();
+});
+
+// Cookie設定用の関数
+function setCookie(name, value, days) {
+  const expires = new Date();
+  expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+  document.cookie = name + '=' + value + ';expires=' + expires.toUTCString() + ';path=/';
+}
+
+// Cookie取得用の関数
+function getCookie(name) {
+  const nameEQ = name + '=';
+  const ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+
