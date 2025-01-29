@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
   background-color: #f5f7fa;
   color: #333;
@@ -18,9 +18,140 @@ header {
   text-align: center;
   margin-bottom: 10px;
   background-color: #4a90e2;
-  color: white;
+  color: #ffffff;
   padding: 10px 0;
   border-radius: 8px;
+}
+
+.login-form {
+  position: fixed;
+  bottom: 70px;
+  left: 20px;
+  display: flex;
+  gap: 10px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform-origin: left center;
+  animation: slideIn 0.3s ease-out;
+  z-index: 1000;
+}
+
+.login-form.hiding {
+  animation: slideOut 0.3s ease-in;
+}
+
+@keyframes slideIn {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+  to {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+}
+
+input[type="password"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 40px;
+  min-width: 200px;
+}
+
+.login-button,
+.logout-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 8px 16px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 40px;
+  z-index: 1000;
+}
+
+.login-button {
+  background-color: #4CAF50;
+}
+
+.login-button:hover {
+  background-color: #45a049;
+}
+
+.logout-button {
+  background-color: #ff4444;
+  display: none;
+}
+
+.logout-button:hover {
+  background-color: #cc0000;
+}
+
+/* ヘッダーの認証セクション */
+.auth-section {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+
+.auth-section input {
+  padding: 12px;
+  /* ボタンと同じ縦幅に調整 */
+  border: none;
+  border-radius: 4px;
+  width: 90%;
+  /* 左右に余白を作る */
+  margin: 10px auto;
+  display: block;
+  font-size: 1rem;
+  background-color: #ffffff;
+}
+
+.auth-section button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #4a90e2;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.auth-section button:hover {
+  background-color: #f0f0f0;
+}
+
+#login-status {
+  color: white;
+  font-size: 0.9em;
 }
 
 /* スマホ用ボタンをデフォルトで非表示 */
@@ -30,9 +161,13 @@ header {
 
 /* メインコンテンツのレイアウト */
 .container {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  max-width: 1200px;
+  /* コンテンツの最大幅を設定 */
+  margin: 0 auto;
+  /* 中央寄せ */
+  padding: 20px;
+  width: 100%;
+  /* レスポンシブ対応 */
 }
 
 /* 左パネル（タスク追加） */
@@ -47,13 +182,23 @@ header {
 
 .left-panel h2,
 .right-panel h2 {
-  color: #4a90e2;
+  color: #fff;
+  background-color: #4a90e2;
   margin-bottom: 15px;
   font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 6px;
 }
 
 .left-panel .form-group {
   margin-bottom: 15px;
+}
+
+.left-panel .form-group label {
+  font-weight: bold;
+  color: #4a90e2;
+  display: block;
+  margin-bottom: 5px;
 }
 
 .left-panel input,
@@ -90,7 +235,18 @@ header {
 
 #task-search .form-group {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#task-search .form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #4a90e2;
+}
+
+#task-search .form-group .search-controls {
+  display: flex;
   gap: 10px;
 }
 
@@ -217,13 +373,40 @@ footer {
 /* スマホ用スタイル */
 @media (max-width: 768px) {
 
+  /* スマホ用ボタンを表示 */
+  #mobile-buttons {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #4a90e2;
+  }
+
+  #mobile-buttons button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    background-color: #ffffff;
+    color: #4a90e2;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+
+  #mobile-buttons button:hover {
+    background-color: #357abd;
+  }
+
   /* タブ切り替えボタン */
   #tab-buttons {
     display: flex;
     justify-content: space-around;
     padding: 10px;
     margin-bottom: 15px;
-    background-color: #ffffff;
+    background-color: #4a90e2;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
 
@@ -251,7 +434,7 @@ footer {
   /* タスク追加セクションとタスク一覧セクション */
   #task-input,
   #task-list {
-    display: none; /* 初期状態は非表示 */
+    display: none;
     padding: 15px;
     background-color: #ffffff;
     border-radius: 8px;
@@ -260,34 +443,7 @@ footer {
 
   #task-input.active,
   #task-list.active {
-    display: block; /* アクティブなセクションのみ表示 */
-  }
-  
-  /* モバイルボタン */
-  #mobile-buttons {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-
-  #mobile-buttons button {
-    flex: 1;
-    margin: 0 5px;
-    padding: 12px;
-    font-size: 1rem;
-    border: none;
-    background-color: #4a90e2;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  #mobile-buttons button:hover {
-    background-color: #357abd;
+    display: block;
   }
 
   /* コンテナ全体を縦に並べる */
@@ -295,6 +451,8 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding: 10px;
+    /* スマホではパディングを小さく */
   }
 
   /* タスクリスト */
@@ -351,4 +509,80 @@ footer {
   #tasks li .drag-handle {
     display: none;
   }
+
+  .login-form {
+    left: 10px;
+    right: 10px;
+    width: auto;
+  }
+
+  .login-form input[type="password"] {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+/* タブボタンのスタイル */
+.tab-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 10px 0;
+  z-index: 100;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.tab-button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+/* タブコンテンツのスタイル */
+.tab-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tab-content.active {
+  display: block;
+  opacity: 1;
+}
+
+/* PCビュー用のスタイル */
+@media (min-width: 768px) {
+  .tab-buttons {
+    display: none;
+  }
+
+  .tab-content {
+    display: block !important;
+    opacity: 1 !important;
+  }
+}
+
+#auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+}
+
+#auth-container.hidden {
+  display: none;
 }
