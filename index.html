@@ -12,8 +12,18 @@
 <body>
   <header>
     <h1>タスク管理アプリ</h1>
+    <div class="auth-section">
+      <div id="auth-container">
+        <div class="login-form">
+          <input type="password" placeholder="パスワードを入力">
+          <button type="submit">確定</button>
+        </div>
+        <button class="login-button">ログイン</button>
+        <span id="login-status"></span>
+      </div>
+    </div>
     <div id="mobile-buttons" class="mobile-only">
-      <button id="show-task-list" class="mobile-button">タスク一覧</button>
+      <button id="show-task-list" class="mobile-button active">タスク一覧</button>
       <button id="show-task-add" class="mobile-button">タスク追加</button>
     </div>
   </header>
@@ -51,12 +61,12 @@
       <section id="task-list" class="right-panel">
         <div id="task-search">
           <div class="form-group">
-            <label for="search-date">日付で検索</label><br>
+            <label for="search-date">日付で検索</label>
             <input type="date" id="search-date" aria-label="日付検索ボックス">
             <button id="reset-date" aria-label="日付リセット">リセット</button>
           </div>
           <div class="form-group">
-            <label for="search-category">カテゴリで検索</label><br>
+            <label for="search-category">カテゴリで検索</label>
             <select id="search-category" aria-label="カテゴリ検索ボックス">
               <option value="">すべて</option>
               <option value="勉強">勉強</option>
